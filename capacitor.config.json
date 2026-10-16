@@ -1,0 +1,6 @@
+{
+  "appId": "com.anchor.app",
+  "appName": "Anchor",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
