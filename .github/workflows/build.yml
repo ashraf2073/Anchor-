@@ -24,11 +24,18 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Install Dependencies & Initialize Capacitor
+      - name: Prepare Web Assets & Initialize Capacitor
         run: |
           npm install
-          npx cap init Anchor com.anchor.app --web-dir .
-          npx cap add android
+          mkdir -p www
+          # Copy all root html, css, js, and asset files into www
+          cp -r *.html *.css *.js assets www/ 2>/dev/null || cp -r * www/ 2>/dev/null || true
+          
+          # Initialize Android project if not already present
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
 
       - name: Build Android APK
         run: |
