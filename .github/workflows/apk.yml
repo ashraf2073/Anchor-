@@ -24,9 +24,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Build App inside anchor Folder
+      - name: Build App inside Anchor Folder
         run: |
-          cd anchor
+          cd Anchor
           npm install
           npx cap init Anchor com.anchor.app --web-dir . || true
           npx cap add android || true
