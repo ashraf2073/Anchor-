@@ -1,6 +1,1 @@
-{
-  "appId": "com.anchor.app",
-  "appName": "Anchor",
-  "webDir": "www",
-  "bundledWebRuntime": false
-}
+{"appId":"app.anchor.calm","appName":"Anchor","webDir":"www","backgroundColor":"#0e0f10"}
