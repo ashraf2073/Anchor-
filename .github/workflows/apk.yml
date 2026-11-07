@@ -27,7 +27,6 @@ jobs:
       - name: Build App inside Anchor Folder
         run: |
           npm install
-          npx cap init Anchor com.anchor.app --web-dir . || true
           npx cap add android || true
           npx cap sync android
           
