@@ -24,7 +24,7 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Build App inside Anchor Folder
+      - name: Build App inside anchor Folder
         run: |
           cd anchor
           npm install
