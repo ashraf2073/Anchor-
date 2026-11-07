@@ -24,12 +24,22 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Build App inside Anchor Folder
+      - name: Prepare Web Assets and Build APK
         run: |
           npm install
+          
+          # Create the www directory Capacitor requires and copy your root files into it
+          mkdir -p www
+          cp index.html www/
+          
+          # Copy other web assets if they exist in your root
+          [ -f style.css ] && cp style.css www/
+          [ -f script.js ] && cp script.js www/
+          [ -d assets ] && cp -r assets www/
+
           npx cap add android || true
           npx cap sync android
-          
+
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
@@ -38,5 +48,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Anchor-APK
-          path: anchor/android/app/build/outputs/apk/debug/app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
           
